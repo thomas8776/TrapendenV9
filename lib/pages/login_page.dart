@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'intro_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const HomePage(),
+                            builder: (_) => const IntroPage(),
                           ),
                         );
                       },
