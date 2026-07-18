@@ -1,0 +1,24 @@
+name: trapendenv9
+description: TrapendenV9
+publish_to: "none"
+
+version: 9.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  video_player: ^2.10.0
+  marquee: ^2.3.0
+  font_awesome_flutter: ^10.8.0
+  
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/videos/
