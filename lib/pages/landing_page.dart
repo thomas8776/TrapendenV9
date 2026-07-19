@@ -467,7 +467,7 @@ GridView.count(
   shrinkWrap: true,
   physics: const NeverScrollableScrollPhysics(),
   crossAxisCount: 2,
-  mainAxisSpacing: 18,
+  crossAxisSpacing: 18,
   mainAxisSpacing: 18,
   childAspectRatio: .90,
   children: [
