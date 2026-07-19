@@ -6,107 +6,252 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const accent = Color(0xff00ffd5);
-
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xff0a1122),
       body: Stack(
-        fit: StackFit.expand,
         children: [
 
-          Image.asset(
-            "assets/images/login.jpg",
-            fit: BoxFit.cover,
-          ),
-
-          Container(
-            color: Colors.black.withOpacity(0.65),
+          // Background Grid
+          Positioned.fill(
+            child: CustomPaint(
+              painter: GridPainter(),
+            ),
           ),
 
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+            child: Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 28),
+                child: Column(
+                  children: [
 
-                  Image.asset(
-                    "assets/images/logo.png",
-                    width: 100,
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  const Text(
-                    "TrapendenV9",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-
-                  const SizedBox(height: 40),
-
-                  TextField(
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: "Username",
-                      hintStyle:
-                          const TextStyle(color: Colors.white54),
-                      filled: true,
-                      fillColor: Colors.white10,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 15),
-
-                  TextField(
-                    obscureText: true,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                      hintStyle:
-                          const TextStyle(color: Colors.white54),
-                      filled: true,
-                      fillColor: Colors.white10,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 30),
-
-                  SizedBox(
-                    width: double.infinity,
-                    height: 55,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: accent,
-                        foregroundColor: Colors.black,
-                      ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const IntroPage(),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.blue.withOpacity(.45),
+                            blurRadius: 35,
+                            spreadRadius: 5,
                           ),
-                        );
-                      },
-                      child: const Text(
-                        "LOGIN",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          "assets/images/logo.png",
+                          width: 95,
+                          height: 95,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                  ),
-                ],
+
+                    const SizedBox(height: 25),
+
+                    ShaderMask(
+                      shaderCallback: (bounds) {
+                        return const LinearGradient(
+                          colors: [
+                            Color(0xff42d4ff),
+                            Color(0xff6d7dff),
+                          ],
+                        ).createShader(bounds);
+                      },
+                      child: const Text(
+                        "TrapendenV9",
+                        style: TextStyle(
+                          fontSize: 38,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 18,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white10,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: Colors.white24),
+                      ),
+                      child: const Text(
+                        "Masuk untuk melanjutkan",
+                        style: TextStyle(
+                          color: Colors.white70,
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 35),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(22),
+                      decoration: BoxDecoration(
+                        color: const Color(0xff1a2237),
+                        borderRadius: BorderRadius.circular(28),
+                        border: Border.all(color: Colors.white10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.blue.withOpacity(.15),
+                            blurRadius: 30,
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          Row(
+                            children: const [
+                              Icon(
+                                Icons.account_circle,
+                                color: Color(0xff49b8ff),
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                "KREDENSIAL AKUN",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 25),
+
+                          TextField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.person_outline,
+                                color: Colors.white54,
+                              ),
+                              hintText: "Username",
+                              hintStyle: const TextStyle(
+                                color: Colors.white54,
+                              ),
+                              filled: true,
+                              fillColor: const Color(0xff10192d),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 18),
+
+                          TextField(
+                            obscureText: true,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: Colors.white54,
+                              ),
+                              suffixIcon: const Icon(
+                                Icons.visibility_off_outlined,
+                                color: Colors.white54,
+                              ),
+                              hintText: "Password",
+                              hintStyle: const TextStyle(
+                                color: Colors.white54,
+                              ),
+                              filled: true,
+                              fillColor: const Color(0xff10192d),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18),
+                                borderSide: BorderSide.none,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 30),
+
+                          SizedBox(
+                            width: double.infinity,
+                            height: 60,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color(0xff38c8ff),
+                                    Color(0xff6569ff),
+                                  ],
+                                ),
+                              ),
+                              child: ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  foregroundColor: Colors.white,
+                                ),
+                                icon: const Icon(Icons.login),
+                                label: const Text(
+                                  "MASUK",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const IntroPage(),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 25),
+
+                          const Center(
+                            child: Text(
+                              "Belum punya akses?",
+                              style: TextStyle(
+                                color: Colors.white70,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          const Center(
+                            child: Text(
+                              "BELI SEKARANG",
+                              style: TextStyle(
+                                color: Color(0xff49b8ff),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 35),
+
+                    const Text(
+                      "© 2026 TrapendenV9",
+                      style: TextStyle(
+                        color: Colors.white38,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -114,4 +259,34 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class GridPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withOpacity(0.05)
+      ..strokeWidth = 1;
+
+    const gap = 30.0;
+
+    for (double x = 0; x <= size.width; x += gap) {
+      canvas.drawLine(
+        Offset(x, 0),
+        Offset(x, size.height),
+        paint,
+      );
+    }
+
+    for (double y = 0; y <= size.height; y += gap) {
+      canvas.drawLine(
+        Offset(0, y),
+        Offset(size.width, y),
+        paint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
