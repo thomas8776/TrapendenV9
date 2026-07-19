@@ -267,6 +267,132 @@ class _LandingPageState extends State<LandingPage> {
             ),
 
             const SizedBox(height: 30),
+
+const Text(
+  "Latest Updates",
+  style: TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+const SizedBox(height: 15),
+
+SizedBox(
+  height: 160,
+  child: ListView(
+    scrollDirection: Axis.horizontal,
+    children: [
+      Container(
+        width: 260,
+        margin: const EdgeInsets.only(right: 15),
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: Colors.blue.withOpacity(.12),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.blueAccent),
+        ),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.new_releases,
+              color: Colors.cyanAccent,
+              size: 32,
+            ),
+            SizedBox(height: 12),
+            Text(
+              "Trapenden V10 Released",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "UI lebih modern dan performa lebih cepat.",
+              style: TextStyle(
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+      ),
+
+      Container(
+        width: 260,
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: Colors.green.withOpacity(.12),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.greenAccent),
+        ),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              Icons.security,
+              color: Colors.greenAccent,
+              size: 32,
+            ),
+            SizedBox(height: 12),
+            Text(
+              "Security Improved",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              "Sistem keamanan telah diperbarui.",
+              style: TextStyle(
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  ),
+),
+
+const SizedBox(height: 25),
+
+Container(
+  width: double.infinity,
+  padding: const EdgeInsets.all(18),
+  decoration: BoxDecoration(
+    color: Colors.white.withOpacity(.08),
+    borderRadius: BorderRadius.circular(20),
+  ),
+  child: const Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Announcement",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      SizedBox(height: 10),
+      Text(
+        "Selamat datang di Trapenden V10. Nikmati fitur terbaru dan update yang akan datang.",
+        style: TextStyle(
+          color: Colors.white70,
+          height: 1.5,
+        ),
+      ),
+    ],
+  ),
+),
+
+const SizedBox(height: 30),
           ],
         ),
       ),
