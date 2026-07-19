@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'landing_page.dart';
+import 'bug_page.dart';
 import 'info_page.dart';
-import 'tools_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -255,29 +255,29 @@ class ToolsPage extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-  currentIndex: 1,
+  currentIndex: 3,
   backgroundColor: const Color(0xff111111),
   selectedItemColor: Colors.cyanAccent,
   unselectedItemColor: Colors.white54,
 
   onTap: (index) {
-    if (index == 0) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const LandingPage()),
-      );
-    } else if (index == 2) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const InfoPage()),
-      );
-    } else if (index == 3) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const ToolsPage()),
-      );
-    }
-  },
+  if (index == 0) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const LandingPage()),
+    );
+  } else if (index == 1) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const BugPage()),
+    );
+  } else if (index == 2) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const InfoPage()),
+    );
+  }
+},
 
   items: const [
     BottomNavigationBarItem(
@@ -296,5 +296,8 @@ class ToolsPage extends StatelessWidget {
       icon: Icon(Icons.build),
       label: "Tools",
     ),
-  ],
+    ],
 ),
+    );
+  }
+}
