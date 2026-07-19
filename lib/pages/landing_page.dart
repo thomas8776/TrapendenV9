@@ -472,43 +472,14 @@ class _LandingPageState extends State<LandingPage> {
   // ================= QUICK ACTION =================
 
   Widget buildQuickActions() {
-  Widget item(IconData icon, String title, Color color) {
-    return Expanded(
-      child: Container(
-        height: 90,
-        margin: const EdgeInsets.symmetric(horizontal: 4),
-        decoration: BoxDecoration(
-          color: const Color(0xff141d2f),
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: Colors.cyanAccent.withOpacity(.15),
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, color: color, size: 28),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
+
       const SizedBox(height: 25),
 
       const Text(
-        "Quick Actions",
+        "Quick Menu",
         style: TextStyle(
           color: Colors.white,
           fontSize: 20,
@@ -520,13 +491,117 @@ class _LandingPageState extends State<LandingPage> {
 
       Row(
         children: [
-          item(Icons.security, "Scanner", Colors.cyan),
-          item(Icons.terminal, "Tools", Colors.orange),
-          item(Icons.code, "Scripts", Colors.green),
-          item(Icons.settings, "Settings", Colors.purpleAccent),
+
+          quickButton(
+            icon: Icons.bug_report,
+            title: "Bug",
+            color: Colors.redAccent,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const BugPage(),
+                ),
+              );
+            },
+          ),
+
+          quickButton(
+            icon: Icons.info,
+            title: "Info",
+            color: Colors.cyan,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const InfoPage(),
+                ),
+              );
+            },
+          ),
+
         ],
       ),
+
+      const SizedBox(height: 10),
+
+      Row(
+        children: [
+
+          quickButton(
+            icon: Icons.build,
+            title: "Tools",
+            color: Colors.orange,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ToolsPage(),
+                ),
+              );
+            },
+          ),
+
+          quickButton(
+            icon: Icons.settings,
+            title: "Settings",
+            color: Colors.green,
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Settings coming soon"),
+                ),
+              );
+            },
+          ),
+
+        ],
+      ),
+
     ],
+  );
+}  
+
+  Widget quickButton({
+  required IconData icon,
+  required String title,
+  required Color color,
+  required VoidCallback onTap,
+}) {
+  return Expanded(
+    child: InkWell(
+      borderRadius: BorderRadius.circular(20),
+      onTap: onTap,
+      child: Container(
+        height: 95,
+        margin: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: const Color(0xff141d2f),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.cyanAccent.withOpacity(.15),
+          ),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              color: color,
+              size: 30,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
   );
 }
 
