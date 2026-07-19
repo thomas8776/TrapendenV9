@@ -119,32 +119,42 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ),
         child: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.center,
-          children: [
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
 
-            CircleAvatar(
-              radius: 28,
-              backgroundColor:
-                  color.withOpacity(.15),
-              child: Icon(
-                icon,
-                color: color,
-                size: 30,
-              ),
-            ),
+    Container(
+      width: 64,
+      height: 64,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: color.withOpacity(.15),
+        boxShadow: [
+          BoxShadow(
+            color: color.withOpacity(.35),
+            blurRadius: 18,
+          ),
+        ],
+      ),
+      child: Icon(
+        icon,
+        color: color,
+        size: 34,
+      ),
+    ),
 
-            const SizedBox(height: 14),
+    const SizedBox(height: 16),
 
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
+    Text(
+      title,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+
+  ],
+),
       ),
     );
   }
@@ -153,7 +163,19 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff090d18),
-      body: SafeArea(
+      body: Container(
+  decoration: const BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(0xff08111f),
+        Color(0xff101a33),
+        Color(0xff05070d),
+      ],
+    ),
+  ),
+  child: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(18),
           children: [
@@ -170,11 +192,23 @@ Row(
 
     const SizedBox(width: 15),
 
-    Image.asset(
-      "assets/images/logo.png",
-      width: 55,
-      height: 55,
-    ),
+    Container(
+  decoration: BoxDecoration(
+    shape: BoxShape.circle,
+    boxShadow: [
+      BoxShadow(
+        color: Colors.cyanAccent.withOpacity(.35),
+        blurRadius: 20,
+        spreadRadius: 2,
+      ),
+    ],
+  ),
+  child: Image.asset(
+    "assets/images/logo.png",
+    width: 55,
+    height: 55,
+  ),
+),
 
     const SizedBox(width: 15),
 
@@ -243,12 +277,71 @@ ClipRRect(
 
 const SizedBox(height: 25),
 
+Container(
+  height: 150,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(22),
+    gradient: const LinearGradient(
+      colors: [
+        Color(0xff00bcd4),
+        Color(0xff1565c0),
+      ],
+    ),
+  ),
+  child: const Padding(
+    padding: EdgeInsets.all(20),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+
+        Text(
+          "🔥 Trapenden V10",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
+        SizedBox(height: 10),
+
+        Text(
+          "New Premium Dashboard\nCyber UI • Fast • Smooth",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+          ),
+        ),
+
+      ],
+    ),
+  ),
+),
+
+const SizedBox(height: 25),
+
 // ================= WELCOME =================
 
 Container(
   padding: const EdgeInsets.all(22),
   decoration: BoxDecoration(
-    color: const Color(0xff141d2f),
+    gradient: const LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [
+    Color(0xff1a2742),
+    Color(0xff0f1628),
+  ],
+),
+
+boxShadow: [
+  BoxShadow(
+    color: Colors.black38,
+    blurRadius: 15,
+    offset: Offset(0, 8),
+  ),
+],
     borderRadius: BorderRadius.circular(25),
     border: Border.all(
       color: Colors.cyanAccent.withOpacity(.30),
@@ -374,9 +467,9 @@ GridView.count(
   shrinkWrap: true,
   physics: const NeverScrollableScrollPhysics(),
   crossAxisCount: 2,
-  crossAxisSpacing: 14,
-  mainAxisSpacing: 14,
-  childAspectRatio: 1.05,
+  mainAxisSpacing: 18,
+  mainAxisSpacing: 18,
+  childAspectRatio: .90,
   children: [
 
     actionCard(
@@ -422,8 +515,8 @@ GridView.count(
     ),
 
     actionCard(
-      title: "Premium",
-      icon: Icons.workspace_premium,
+      title: "VIP",
+      icon: Icons.diamond,
       color: Colors.purpleAccent,
       onTap: () {},
     ),
@@ -640,6 +733,7 @@ const SizedBox(height: 20),
           ],
         ),
       ),
+    ),
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
