@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'bug_page.dart';
+import 'info_page.dart';
+import 'tools_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -635,23 +638,76 @@ class _LandingPageState extends State<LandingPage> {
   @override
 Widget build(BuildContext context) {
   return Scaffold(
-    backgroundColor: const Color(0xff090d18),
-    body: SafeArea(
-      child: ListView(
-        padding: const EdgeInsets.all(18),
-        children: [
-          buildHeader(),
-          buildVideo(),
-          buildBanner(),
-          buildWelcome(),
-          buildDashboard(),
-          buildQuickActions(),
-          buildDeveloper(),
-          const SizedBox(height: 30),
-        ],
-      ),
+  backgroundColor: const Color(0xff090d18),
+
+  body: SafeArea(
+    child: ListView(
+      padding: const EdgeInsets.all(18),
+      children: [
+        buildHeader(),
+        buildVideo(),
+        buildBanner(),
+        buildWelcome(),
+        buildDashboard(),
+        buildQuickActions(),
+        buildDeveloper(),
+        const SizedBox(height: 30),
+      ],
     ),
-  );
+  ),
+
+  bottomNavigationBar: BottomNavigationBar(
+    currentIndex: _currentNav,
+    type: BottomNavigationBarType.fixed,
+    backgroundColor: const Color(0xff141d2f),
+    selectedItemColor: Colors.cyanAccent,
+    unselectedItemColor: Colors.white54,
+    items: const [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: "Home",
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.bug_report),
+        label: "Bug",
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.info),
+        label: "Info",
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.build),
+        label: "Tools",
+      ),
+    ],
+    onTap: (index) {
+      setState(() => _currentNav = index);
+
+      switch (index) {
+        case 0:
+          break;
+        case 1:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const BugPage()),
+          );
+          break;
+        case 2:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const InfoPage()),
+          );
+          break;
+        case 3:
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const ToolsPage()),
+          );
+          break;
+      }
+    },
+  ),
+);
 }
 
 }
