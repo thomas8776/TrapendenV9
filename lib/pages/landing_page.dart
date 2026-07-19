@@ -18,7 +18,6 @@ class _LandingPageState extends State<LandingPage> {
   late VideoPlayerController _controller;
 
   late PageController _bannerController;
-Timer? _bannerTimer;
 
 int _bannerIndex = 0;  
 
@@ -29,25 +28,6 @@ int _bannerIndex = 0;
     super.initState();
 
      _bannerController = PageController();
-
-_bannerTimer = Timer.periodic(
-  const Duration(seconds: 4),
-  (_) {
-    if (!_bannerController.hasClients) return;
-
-    _bannerIndex++;
-
-    if (_bannerIndex > 2) {
-      _bannerIndex = 0;
-    }
-
-    _bannerController.animateToPage(
-      _bannerIndex,
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
-  },
-);
 
     _controller = VideoPlayerController.asset(
       "assets/videos/landing.mp4",
@@ -64,7 +44,6 @@ _bannerTimer = Timer.periodic(
 
   @override
 void dispose() {
-  _bannerTimer?.cancel();
   _bannerController.dispose();
 
   _controller.dispose();
