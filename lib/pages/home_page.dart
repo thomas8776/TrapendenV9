@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marquee/marquee.dart';
+import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -110,7 +111,14 @@ class HomePage extends StatelessWidget {
                       backgroundColor: accent,
                       foregroundColor: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const LoginPage(),
+    ),
+  );
+},
                     child: const Text(
                       "LOGIN TO TrapendenV9",
                       style: TextStyle(fontWeight: FontWeight.bold),
