@@ -392,6 +392,151 @@ Container(
   ),
 ),
 
+const SizedBox(height: 25),
+
+const Text(
+  "Server Status",
+  style: TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+const SizedBox(height: 15),
+
+Container(
+  padding: const EdgeInsets.all(18),
+  decoration: BoxDecoration(
+    color: Colors.white.withOpacity(.08),
+    borderRadius: BorderRadius.circular(20),
+    border: Border.all(color: Colors.white10),
+  ),
+  child: Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Row(
+            children: [
+              Icon(
+                Icons.cloud_done,
+                color: Colors.greenAccent,
+              ),
+              SizedBox(width: 8),
+              Text(
+                "API Server",
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+          Text(
+            "ONLINE",
+            style: TextStyle(
+              color: Colors.greenAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 15),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: const LinearProgressIndicator(
+          value: 0.98,
+          minHeight: 8,
+          backgroundColor: Colors.white12,
+          valueColor: AlwaysStoppedAnimation(
+            Colors.greenAccent,
+          ),
+        ),
+      ),
+      const SizedBox(height: 10),
+      const Text(
+        "Server Uptime 98%",
+        style: TextStyle(
+          color: Colors.white70,
+        ),
+      ),
+    ],
+  ),
+),
+
+const SizedBox(height: 25),
+
+const Text(
+  "Premium Features",
+  style: TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+const SizedBox(height: 15),
+
+GridView.count(
+  shrinkWrap: true,
+  physics: const NeverScrollableScrollPhysics(),
+  crossAxisCount: 2,
+  crossAxisSpacing: 12,
+  mainAxisSpacing: 12,
+  childAspectRatio: 1.6,
+  children: const [
+    Card(
+      color: Color(0xff171717),
+      child: Center(
+        child: ListTile(
+          leading: Icon(Icons.flash_on, color: Colors.amber),
+          title: Text(
+            "Fast Mode",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    ),
+    Card(
+      color: Color(0xff171717),
+      child: Center(
+        child: ListTile(
+          leading: Icon(Icons.security, color: Colors.cyanAccent),
+          title: Text(
+            "Security",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    ),
+    Card(
+      color: Color(0xff171717),
+      child: Center(
+        child: ListTile(
+          leading: Icon(Icons.cloud, color: Colors.blueAccent),
+          title: Text(
+            "Cloud",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    ),
+    Card(
+      color: Color(0xff171717),
+      child: Center(
+        child: ListTile(
+          leading: Icon(
+            Icons.workspace_premium,
+            color: Colors.orange,
+          ),
+          title: Text(
+            "Premium",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    ),
+  ],
+),
+
 const SizedBox(height: 30),
           ],
         ),
