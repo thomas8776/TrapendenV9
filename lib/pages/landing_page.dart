@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -15,11 +17,37 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   late VideoPlayerController _controller;
 
+  late PageController _bannerController;
+Timer? _bannerTimer;
+
+int _bannerIndex = 0;  
+
   int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
+
+     _bannerController = PageController();
+
+_bannerTimer = Timer.periodic(
+  const Duration(seconds: 4),
+  (_) {
+    if (!_bannerController.hasClients) return;
+
+    _bannerIndex++;
+
+    if (_bannerIndex > 2) {
+      _bannerIndex = 0;
+    }
+
+    _bannerController.animateToPage(
+      _bannerIndex,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  },
+);
 
     _controller = VideoPlayerController.asset(
       "assets/videos/landing.mp4",
@@ -35,10 +63,13 @@ class _LandingPageState extends State<LandingPage> {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+void dispose() {
+  _bannerTimer?.cancel();
+  _bannerController.dispose();
+
+  _controller.dispose();
+  super.dispose();
+}
 
   Widget dashboardCard({
     required String title,
@@ -52,8 +83,10 @@ class _LandingPageState extends State<LandingPage> {
         color: const Color(0xff141d2f),
         borderRadius: BorderRadius.circular(22),
         border: Border.all(
-          color: color.withOpacity(.35),
-        ),
+  color: Colors.cyanAccent.withOpacity(.20),
+  width: 1.2,
+),
+         
       ),
       child: Row(
         children: [
@@ -75,25 +108,25 @@ class _LandingPageState extends State<LandingPage> {
                   CrossAxisAlignment.start,
               children: [
 
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white54,
-                    fontSize: 12,
-                  ),
-                ),
+  Text(
+    title,
+    style: const TextStyle(
+      color: Colors.white54,
+      fontSize: 12,
+    ),
+  ),
 
-                const SizedBox(height: 4),
+  const SizedBox(height: 4),
 
-                Text(
-                  value,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+  Text(
+    value,
+    style: const TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+],
             ),
           ),
         ],
@@ -115,8 +148,9 @@ class _LandingPageState extends State<LandingPage> {
           color: const Color(0xff141d2f),
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
-            color: color.withOpacity(.30),
-          ),
+  color: Colors.cyanAccent.withOpacity(.20),
+  width: 1.2,
+),
         ),
         child: Column(
   mainAxisAlignment: MainAxisAlignment.center,
@@ -184,11 +218,18 @@ class _LandingPageState extends State<LandingPage> {
 
 Row(
   children: [
-    const Icon(
-      Icons.menu_rounded,
-      color: Colors.white,
-      size: 28,
-    ),
+    Container(
+  width: 48,
+  height: 48,
+  decoration: BoxDecoration(
+    color: const Color(0xff18243f),
+    borderRadius: BorderRadius.circular(14),
+  ),
+  child: const Icon(
+    Icons.menu_rounded,
+    color: Colors.white,
+  ),
+),
 
     const SizedBox(width: 15),
 
@@ -231,7 +272,7 @@ Row(
           Text(
             "Cyber Developer",
             style: TextStyle(
-              color: Colors.white54,
+                            
             ),
           ),
 
@@ -240,16 +281,44 @@ Row(
     ),
 
     Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 14,
-        vertical: 8,
+  padding: const EdgeInsets.symmetric(
+    horizontal: 14,
+    vertical: 8,
+  ),
+  decoration: BoxDecoration(
+    gradient: const LinearGradient(
+      colors: [
+        Color(0xff00C853),
+        Color(0xff00E676),
+      ],
+    ),
+    borderRadius: BorderRadius.circular(30),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.greenAccent.withOpacity(.35),
+        blurRadius: 12,
       ),
-      decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.circular(30),
+    ],
+  ),
+  child: const Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Icon(
+        Icons.circle,
+        size: 10,
+        color: Colors.white,
       ),
-      child: const Text(
+      SizedBox(width: 6),
+      Text(
         "ONLINE",
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ],
+  ),
+),
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
@@ -296,23 +365,57 @@ Container(
       children: [
 
         Text(
-          "🔥 Trapenden V10",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+  "🔥 Trapenden V10",
+  style: TextStyle(
+    color: Colors.white,
+    fontSize: 28,
+    fontWeight: FontWeight.w900,
+    letterSpacing: .5,
+  ),
+),
 
         SizedBox(height: 10),
 
         Text(
-          "New Premium Dashboard\nCyber UI • Fast • Smooth",
+          "Premium Dashboard\nCyber Security • Fast • Smooth • Modern",
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
           ),
         ),
+
+const SizedBox(height: 18),
+
+Row(
+  children: [
+    Container(
+      width: 24,
+      height: 8,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+    ),
+    const SizedBox(width: 6),
+    Container(
+      width: 8,
+      height: 8,
+      decoration: const BoxDecoration(
+        color: Colors.white54,
+        shape: BoxShape.circle,
+      ),
+    ),
+    const SizedBox(width: 6),
+    Container(
+      width: 8,
+      height: 8,
+      decoration: const BoxDecoration(
+        color: Colors.white54,
+        shape: BoxShape.circle,
+      ),
+    ),
+  ],
+),
 
       ],
     ),
@@ -344,8 +447,9 @@ boxShadow: [
 ],
     borderRadius: BorderRadius.circular(25),
     border: Border.all(
-      color: Colors.cyanAccent.withOpacity(.30),
-    ),
+  color: Colors.cyanAccent.withOpacity(.25),
+  width: 1.2,
+),
   ),
   child: const Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,13 +466,14 @@ boxShadow: [
       SizedBox(height: 10),
 
       Text(
-        "Trapenden Developer",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+  "Trapenden Developer",
+  style: TextStyle(
+    color: Colors.white,
+    fontSize: 30,
+    fontWeight: FontWeight.w900,
+    letterSpacing: .5,
+  ),
+),
 
       SizedBox(height: 18),
 
@@ -379,7 +484,7 @@ boxShadow: [
           Column(
             children: [
               Text(
-                "MEMBER",
+                "VIP DEVELOPER",
                 style: TextStyle(color: Colors.white54),
               ),
               SizedBox(height: 5),
@@ -396,7 +501,7 @@ boxShadow: [
           Column(
             children: [
               Text(
-                "STATUS",
+                "SYSTEM",
                 style: TextStyle(color: Colors.white54),
               ),
               SizedBox(height: 5),
@@ -413,7 +518,7 @@ boxShadow: [
           Column(
             children: [
               Text(
-                "EXPIRE",
+                "LICENSE",
                 style: TextStyle(color: Colors.white54),
               ),
               SizedBox(height: 5),
@@ -540,7 +645,7 @@ const SizedBox(height: 15),
 Container(
   padding: const EdgeInsets.all(20),
   decoration: BoxDecoration(
-    color: const Color(0xff141d2f),
+    color: const Color(0xff18243f),
     borderRadius: BorderRadius.circular(22),
   ),
   child: const Column(
