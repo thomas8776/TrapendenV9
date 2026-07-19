@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'landing_page.dart';
+import 'info_page.dart';
+import 'tools_page.dart';
 
 class BugPage extends StatefulWidget {
   const BugPage({super.key});
@@ -437,11 +440,31 @@ class _BugPageState extends State<BugPage> {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xff111111),
-        selectedItemColor: Colors.cyanAccent,
-        unselectedItemColor: Colors.white54,
-        currentIndex: 1,
-        items: const [
+  backgroundColor: const Color(0xff111111),
+  selectedItemColor: Colors.cyanAccent,
+  unselectedItemColor: Colors.white54,
+  currentIndex: 1,
+
+  onTap: (index) {
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LandingPage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const InfoPage()),
+      );
+    } else if (index == 3) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const ToolsPage()),
+      );
+    }
+  },
+
+  items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",

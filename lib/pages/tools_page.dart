@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'landing_page.dart';
+import 'info_page.dart';
+import 'tools_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -252,30 +255,46 @@ class ToolsPage extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 3,
-        backgroundColor: const Color(0xff111111),
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.white54,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bug_report),
-            label: "Bug",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            label: "Info",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.build),
-            label: "Tools",
-          ),
-        ],
-      ),
-    );
-  }
-}
+  currentIndex: 1,
+  backgroundColor: const Color(0xff111111),
+  selectedItemColor: Colors.cyanAccent,
+  unselectedItemColor: Colors.white54,
 
+  onTap: (index) {
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LandingPage()),
+      );
+    } else if (index == 2) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const InfoPage()),
+      );
+    } else if (index == 3) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const ToolsPage()),
+      );
+    }
+  },
+
+  items: const [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.home),
+      label: "Home",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.bug_report),
+      label: "Bug",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.info),
+      label: "Info",
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.build),
+      label: "Tools",
+    ),
+  ],
+),

@@ -40,7 +40,7 @@ class InfoPage extends StatelessWidget {
                       ),
                       SizedBox(height: 3),
                       Text(
-                        "MEMBER",
+                        "DEVELOPER",
                         style: TextStyle(
                           color: Colors.white60,
                           fontSize: 11,
@@ -312,6 +312,13 @@ class InfoPage extends StatelessWidget {
         selectedItemColor: Colors.cyanAccent,
         unselectedItemColor: Colors.white54,
         currentIndex: 2,
+
+        onTap: (index) {
+  if (index == 0) {
+    Navigator.pop(context);
+  }
+},
+
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

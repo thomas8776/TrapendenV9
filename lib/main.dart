@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/splash_page.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const TrapendenV9());
@@ -14,7 +14,7 @@ class TrapendenV9 extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'TrapendenV9',
       theme: ThemeData.dark(),
-      home: const SplashPage(),
+      home: const HomePage(),
     );
   }
 }
