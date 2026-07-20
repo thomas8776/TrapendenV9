@@ -607,7 +607,71 @@ class _LandingPageState extends State<LandingPage> {
 
   // ================= DEVELOPER =================
 
-  Widget buildDeveloper() {
+Widget buildServerStatus() {
+  return Container(
+    margin: const EdgeInsets.only(top: 25),
+    padding: const EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      color: const Color(0xff141d2f),
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(
+        color: Colors.cyanAccent.withOpacity(.15),
+      ),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Server Status",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 18),
+        statusTile("API", "ONLINE"),
+        statusTile("Database", "CONNECTED"),
+        statusTile("Security", "ACTIVE"),
+        statusTile("Website", "RUNNING"),
+      ],
+    ),
+  );
+}
+
+Widget statusTile(String title, String status) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 12),
+    child: Row(
+      children: [
+        const Icon(
+          Icons.circle,
+          size: 10,
+          color: Colors.greenAccent,
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+            ),
+          ),
+        ),
+        Text(
+          status,
+          style: const TextStyle(
+            color: Colors.greenAccent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+  
+Widget buildDeveloper() {
   return Container(
     margin: const EdgeInsets.symmetric(vertical: 25),
     padding: const EdgeInsets.all(22),
@@ -719,15 +783,16 @@ Widget build(BuildContext context) {
     child: ListView(
       padding: const EdgeInsets.all(18),
       children: [
-        buildHeader(),
-        buildVideo(),
-        buildBanner(),
-        buildWelcome(),
-        buildDashboard(),
-        buildQuickActions(),
-        buildDeveloper(),
-        const SizedBox(height: 30),
-      ],
+  buildHeader(),
+  buildVideo(),
+  buildBanner(),
+  buildWelcome(),
+  buildDashboard(),
+  buildQuickActions(),
+  buildServerStatus(),
+  buildDeveloper(),
+  const SizedBox(height: 30),
+],
     ),
   ),
 
