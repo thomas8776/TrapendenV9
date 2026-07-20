@@ -311,6 +311,51 @@ class _BugPageState extends State<BugPage> {
                                         FontWeight.bold,
                                   ),
                                 ),
+
+const SizedBox(height: 28),
+
+SizedBox(
+  width: double.infinity,
+  height: 58,
+  child: ElevatedButton.icon(
+    onPressed: () {
+      if (phone.text.trim().isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Masukkan nomor target terlebih dahulu"),
+          ),
+        );
+        return;
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Bug ${bugs[selectedBug]["name"]} siap dikirim",
+          ),
+        ),
+      );
+    },
+    icon: const Icon(Icons.send),
+    label: const Text(
+      "KIRIM BUG",
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.cyanAccent,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 25),
+
                               ],
                             ),
                           ),
