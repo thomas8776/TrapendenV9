@@ -21,32 +21,47 @@ class _BugPageState extends State<BugPage> {
   final phone = TextEditingController();
 
   final bugs = [
-    {
-      "name": "CRASH iOS",
-      "code": "crash_ios",
-      "icon": Icons.shield,
-    },
-    {
-      "name": "DELAY HARD",
-      "code": "delay_hard",
-      "icon": Icons.flash_on,
-    },
-    {
-      "name": "FREEZE UI",
-      "code": "freeze_ui",
-      "icon": Icons.phone_android,
-    },
-    {
-      "name": "NULL INVISIBLE",
-      "code": "null_invisible",
-      "icon": Icons.visibility_off,
-    },
-    {
-      "name": "FORCE CLOSE",
-      "code": "force_close",
-      "icon": Icons.warning,
-    },
-  ];
+  {
+    "name": "CRASH iOS",
+    "code": "crash_ios",
+    "icon": Icons.shield,
+    "power": "High",
+    "risk": "Medium",
+    "target": "WhatsApp",
+  },
+  {
+    "name": "DELAY HARD",
+    "code": "delay_hard",
+    "icon": Icons.flash_on,
+    "power": "Medium",
+    "risk": "Low",
+    "target": "WhatsApp",
+  },
+  {
+    "name": "FREEZE UI",
+    "code": "freeze_ui",
+    "icon": Icons.phone_android,
+    "power": "Extreme",
+    "risk": "High",
+    "target": "WhatsApp",
+  },
+  {
+    "name": "NULL INVISIBLE",
+    "code": "null_invisible",
+    "icon": Icons.visibility_off,
+    "power": "High",
+    "risk": "Medium",
+    "target": "WhatsApp",
+  },
+  {
+    "name": "FORCE CLOSE",
+    "code": "force_close",
+    "icon": Icons.warning,
+    "power": "Extreme",
+    "risk": "High",
+    "target": "WhatsApp",
+  },
+];  
 
   @override
   void initState() {
@@ -355,6 +370,62 @@ SizedBox(
 ),
 
 const SizedBox(height: 25),
+
+Container(
+  padding: const EdgeInsets.all(18),
+  decoration: BoxDecoration(
+    color: Colors.black54,
+    borderRadius: BorderRadius.circular(18),
+    border: Border.all(color: Colors.cyanAccent),
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        "🐞 Bug Information",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+
+      const SizedBox(height: 15),
+
+      Text(
+        "Type       : ${bugs[selectedBug]["name"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+
+      const Text(
+        "Status     : Ready",
+        style: TextStyle(color: Colors.white),
+      ),
+
+      Text(
+        "Power      : ${bugs[selectedBug]["power"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+
+      const Text(
+        "Delay      : Instant",
+        style: TextStyle(color: Colors.white),
+      ),
+
+      Text(
+        "Target     : ${bugs[selectedBug]["target"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+
+      Text(
+        "Risk       : ${bugs[selectedBug]["risk"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+    ],
+  ),
+),
+
+const SizedBox(height: 20),
 
                               ],
                             ),
