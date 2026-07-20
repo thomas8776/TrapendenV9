@@ -327,7 +327,7 @@ class _BugPageState extends State<BugPage> {
                                   ),
                                 ),
 
-const SizedBox(height: 28),
+const SizedBox(height: 50),
 
 SizedBox(
   width: double.infinity,
@@ -353,7 +353,7 @@ SizedBox(
     },
     icon: const Icon(Icons.send),
     label: const Text(
-      "KIRIM BUG",
+      "SEND BUG",
       style: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
