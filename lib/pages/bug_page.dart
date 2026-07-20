@@ -327,104 +327,6 @@ class _BugPageState extends State<BugPage> {
                                   ),
                                 ),
 
-const SizedBox(height: 50),
-
-SizedBox(
-  width: double.infinity,
-  height: 58,
-  child: ElevatedButton.icon(
-    onPressed: () {
-      if (phone.text.trim().isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Masukkan nomor target terlebih dahulu"),
-          ),
-        );
-        return;
-      }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "Bug ${bugs[selectedBug]["name"]} siap dikirim",
-          ),
-        ),
-      );
-    },
-    icon: const Icon(Icons.send),
-    label: const Text(
-      "SEND BUG",
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.cyanAccent,
-      foregroundColor: Colors.black,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
-      ),
-    ),
-  ),
-),
-
-const SizedBox(height: 25),
-
-Container(
-  padding: const EdgeInsets.all(18),
-  decoration: BoxDecoration(
-    color: Colors.black54,
-    borderRadius: BorderRadius.circular(18),
-    border: Border.all(color: Colors.cyanAccent),
-  ),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Text(
-        "🐞 Bug Information",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-
-      const SizedBox(height: 15),
-
-      Text(
-        "Type       : ${bugs[selectedBug]["name"]}",
-        style: const TextStyle(color: Colors.white),
-      ),
-
-      const Text(
-        "Status     : Ready",
-        style: TextStyle(color: Colors.white),
-      ),
-
-      Text(
-        "Power      : ${bugs[selectedBug]["power"]}",
-        style: const TextStyle(color: Colors.white),
-      ),
-
-      const Text(
-        "Delay      : Instant",
-        style: TextStyle(color: Colors.white),
-      ),
-
-      Text(
-        "Target     : ${bugs[selectedBug]["target"]}",
-        style: const TextStyle(color: Colors.white),
-      ),
-
-      Text(
-        "Risk       : ${bugs[selectedBug]["risk"]}",
-        style: const TextStyle(color: Colors.white),
-      ),
-    ],
-  ),
-),
-
 const SizedBox(height: 20),
 
                               ],
@@ -548,7 +450,57 @@ const SizedBox(height: 20),
                   ),
 
                   const SizedBox(height: 30),
-                ],
+
+Container(
+  padding: const EdgeInsets.all(18),
+  decoration: BoxDecoration(
+    color: Colors.black54,
+    borderRadius: BorderRadius.circular(18),
+    border: Border.all(color: Colors.cyanAccent),
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text(
+        "🐞 Bug Information",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(height: 15),
+      Text(
+        "Type       : ${bugs[selectedBug]["name"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+      const Text(
+        "Status     : Ready",
+        style: TextStyle(color: Colors.white),
+      ),
+      Text(
+        "Power      : ${bugs[selectedBug]["power"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+      const Text(
+        "Delay      : Instant",
+        style: TextStyle(color: Colors.white),
+      ),
+      Text(
+        "Target     : ${bugs[selectedBug]["target"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+      Text(
+        "Risk       : ${bugs[selectedBug]["risk"]}",
+        style: const TextStyle(color: Colors.white),
+      ),
+    ],
+  ),
+),
+
+const SizedBox(height: 30),
+
+],
               ),
             ),
           ),
