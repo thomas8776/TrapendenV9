@@ -535,13 +535,23 @@ Container(
         style: const TextStyle(color: Colors.white),
       ),
       const Text(
-        "Status     : Ready",
-        style: TextStyle(color: Colors.white),
-      ),
+  "Status     : Ready",
+  style: TextStyle(
+    color: Colors.greenAccent,
+    fontWeight: FontWeight.bold,
+  ),
+),
       Text(
-        "Power      : ${bugs[selectedBug]["power"]}",
-        style: const TextStyle(color: Colors.white),
-      ),
+  "Power      : ${bugs[selectedBug]["power"]}",
+  style: TextStyle(
+    color: bugs[selectedBug]["power"] == "Extreme"
+        ? Colors.redAccent
+        : bugs[selectedBug]["power"] == "High"
+            ? Colors.orangeAccent
+            : Colors.greenAccent,
+    fontWeight: FontWeight.bold,
+  ),
+),
       const Text(
         "Delay      : Instant",
         style: TextStyle(color: Colors.white),
