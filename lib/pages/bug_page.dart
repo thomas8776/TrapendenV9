@@ -447,6 +447,66 @@ const SizedBox(height: 20),
                         ),
                       ),
                     ),
+                                    ),
+
+                  const SizedBox(height: 30),
+
+                  Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: Colors.greenAccent),
+                    ),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "📢 Recent Update",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          children: [
+                            Icon(Icons.check_circle,
+                                color: Colors.greenAccent, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              "Server Online",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Icon(Icons.check_circle,
+                                color: Colors.greenAccent, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              "Bug Database Loaded",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Icon(Icons.check_circle,
+                                color: Colors.greenAccent, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              "Ready to Send",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
 
                   const SizedBox(height: 30),
