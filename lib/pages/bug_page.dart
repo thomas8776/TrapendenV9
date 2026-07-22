@@ -418,36 +418,48 @@ const SizedBox(height: 20),
 
                   const SizedBox(height: 30),
 
-                  SizedBox(
-                    width: double.infinity,
-                    height: 58,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "Fitur SEND BUG masih dalam pengembangan.",
-                            ),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.cyanAccent,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                      ),
-                      icon: const Icon(Icons.send),
-                      label: const Text(
-                        "SEND BUG",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                                    ),
+                  Container(
+  width: double.infinity,
+  height: 60,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(18),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.cyanAccent.withOpacity(0.45),
+        blurRadius: 18,
+        spreadRadius: 2,
+      ),
+    ],
+  ),
+  child: ElevatedButton.icon(
+    onPressed: () {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "🚀 ${bugs[selectedBug]["name"]} berhasil dipilih",
+          ),
+        ),
+      );
+    },
+    icon: const Icon(Icons.send_rounded),
+    label: const Text(
+      "SEND BUG",
+      style: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1,
+      ),
+    ),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.cyanAccent,
+      foregroundColor: Colors.black,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+    ),
+  ),
+),
 
                   const SizedBox(height: 30),
 
