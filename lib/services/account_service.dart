@@ -12,20 +12,21 @@ class Account {
     required this.role,
   });
 
-Map<String, dynamic> toJson() {
-  return {
-    "username": username,
-    "password": password,
-    "role": role,
-  };
-}
+  Map<String, dynamic> toJson() {
+    return {
+      "username": username,
+      "password": password,
+      "role": role,
+    };
+  }
 
-factory Account.fromJson(Map<String, dynamic> json) {
-  return Account(
-    username: json["username"],
-    password: json["password"],
-    role: json["role"],
-  );
+  factory Account.fromJson(Map<String, dynamic> json) {
+    return Account(
+      username: json["username"],
+      password: json["password"],
+      role: json["role"],
+    );
+  }
 }
 
 class AccountService {
@@ -37,19 +38,16 @@ class AccountService {
       password: "developer123",
       role: "Developer",
     ),
-
     Account(
       username: "reseller",
       password: "reseller123",
       role: "Reseller",
     ),
-
     Account(
       username: "vip",
       password: "vip123",
       role: "VIP",
     ),
-
     Account(
       username: "member",
       password: "member123",
@@ -78,7 +76,9 @@ class AccountService {
       ..clear()
       ..addAll(
         data.map(
-          (e) => Account.fromJson(jsonDecode(e)),
+          (e) => Account.fromJson(
+            jsonDecode(e) as Map<String, dynamic>,
+          ),
         ),
       );
   }
