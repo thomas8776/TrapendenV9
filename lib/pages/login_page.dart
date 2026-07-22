@@ -140,50 +140,51 @@ class _LoginPageState extends State<LoginPage> {
                           TextField(
   controller: usernameController,
   style: const TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                              prefixIcon: const Icon(
-                                Icons.person_outline,
-                                color: Colors.white54,
-                              ),
-                              hintText: "Username",
-                              hintStyle: const TextStyle(
-                                color: Colors.white54,
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xff10192d),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                          ),
+  decoration: InputDecoration(
+    prefixIcon: const Icon(
+      Icons.person_outline,
+      color: Colors.white54,
+    ),
+    hintText: "Username",
+    hintStyle: const TextStyle(
+      color: Colors.white54,
+    ),
+    filled: true,
+    fillColor: const Color(0xff10192d),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(18),
+      borderSide: BorderSide.none,
+    ),
+  ),
+),
 
-                          const SizedBox(height: 18),
+const SizedBox(height: 18),
 
-                          TextField(
-                            obscureText: true,
-                            style: const TextStyle(color: Colors.white),
-                            decoration: InputDecoration(
-                              prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: Colors.white54,
-                              ),
-                              suffixIcon: const Icon(
-                                Icons.visibility_off_outlined,
-                                color: Colors.white54,
-                              ),
-                              hintText: "Password",
-                              hintStyle: const TextStyle(
-                                color: Colors.white54,
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xff10192d),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                          ),
+TextField(
+  controller: passwordController,
+  obscureText: true,
+  style: const TextStyle(color: Colors.white),
+  decoration: InputDecoration(
+    prefixIcon: const Icon(
+      Icons.lock_outline,
+      color: Colors.white54,
+    ),
+    suffixIcon: const Icon(
+      Icons.visibility_off_outlined,
+      color: Colors.white54,
+    ),
+    hintText: "Password",
+    hintStyle: const TextStyle(
+      color: Colors.white54,
+    ),
+    filled: true,
+    fillColor: const Color(0xff10192d),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(18),
+      borderSide: BorderSide.none,
+    ),
+  ),
+),
 
                           const SizedBox(height: 30),
 
