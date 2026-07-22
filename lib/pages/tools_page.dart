@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'landing_page.dart';
 import 'bug_page.dart';
 import 'info_page.dart';
+import 'manage_server_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -188,14 +189,24 @@ class ToolsPage extends StatelessWidget {
                     return InkWell(
                       borderRadius: BorderRadius.circular(24),
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              "${item["title"]} coming soon",
-                            ),
-                          ),
-                        );
-                      },
+  if (item["title"] == "Manage Server") {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ManageServerPage(),
+      ),
+    );
+    return;
+  }
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        "${item["title"]} coming soon",
+      ),
+    ),
+  );
+},
                       child: Container(
                         decoration: BoxDecoration(
                           color: const Color(0xff131d35),
