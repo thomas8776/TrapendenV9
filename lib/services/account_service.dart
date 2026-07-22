@@ -34,23 +34,23 @@ class AccountService {
 
   static final List<Account> accounts = [
     Account(
-      username: "developer",
-      password: "developer123",
+      username: "trapenden",
+      password: "developer",
       role: "Developer",
     ),
     Account(
       username: "reseller",
-      password: "reseller123",
+      password: "resellertrapenden",
       role: "Reseller",
     ),
     Account(
       username: "vip",
-      password: "vip123",
+      password: "viptrapenden",
       role: "VIP",
     ),
     Account(
       username: "member",
-      password: "member123",
+      password: "membertrapenden",
       role: "Member",
     ),
   ];
