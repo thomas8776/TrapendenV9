@@ -5,6 +5,7 @@ import 'info_page.dart';
 import 'manage_server_page.dart';
 import 'osint_page.dart';
 import 'network_page.dart';
+import 'downloader_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -220,6 +221,16 @@ class ToolsPage extends StatelessWidget {
     );
     return;
   }
+
+  if (item["title"] == "Downloader") {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const DownloaderPage(),
+    ),
+  );
+  return;
+}
 
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
