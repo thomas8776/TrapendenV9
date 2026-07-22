@@ -49,18 +49,25 @@ class _LandingPageState extends State<LandingPage> {
   Widget buildHeader() {
   return Row(
     children: [
-      Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          color: const Color(0xff18243f),
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: const Icon(
-          Icons.menu_rounded,
-          color: Colors.white,
-        ),
+      Builder(
+  builder: (context) => GestureDetector(
+    onTap: () {
+      Scaffold.of(context).openDrawer();
+    },
+    child: Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: const Color(0xff18243f),
+        borderRadius: BorderRadius.circular(15),
       ),
+      child: const Icon(
+        Icons.menu_rounded,
+        color: Colors.white,
+      ),
+    ),
+  ),
+),
 
       const SizedBox(width: 15),
 
@@ -777,6 +784,71 @@ Widget buildDeveloper() {
   @override
 Widget build(BuildContext context) {
   return Scaffold(
+  drawer: Drawer(
+    backgroundColor: const Color(0xff111111),
+    child: SafeArea(
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 35,
+                  backgroundImage: AssetImage("assets/images/logo.png"),
+                ),
+                SizedBox(height: 12),
+                Text(
+                  "Trapenden V10",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Cyber Developer",
+                  style: TextStyle(color: Colors.cyanAccent),
+                ),
+              ],
+            ),
+          ),
+
+          ListTile(
+            leading: Icon(Icons.home, color: Colors.white),
+            title: Text("Home", style: TextStyle(color: Colors.white)),
+          ),
+
+          ListTile(
+            leading: Icon(Icons.bug_report, color: Colors.white),
+            title: Text("Bug Sender", style: TextStyle(color: Colors.white)),
+          ),
+
+          ListTile(
+            leading: Icon(Icons.build, color: Colors.white),
+            title: Text("Tools", style: TextStyle(color: Colors.white)),
+          ),
+
+          ListTile(
+            leading: Icon(Icons.info, color: Colors.white),
+            title: Text("Information", style: TextStyle(color: Colors.white)),
+          ),
+
+          ListTile(
+            leading: Icon(Icons.person_add, color: Colors.white),
+            title: Text("Create Account", style: TextStyle(color: Colors.white)),
+          ),
+
+          Divider(color: Colors.white24),
+
+          ListTile(
+            leading: Icon(Icons.logout, color: Colors.red),
+            title: Text("Logout", style: TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    ),
+  ),
   backgroundColor: const Color(0xff090d18),
 
   body: SafeArea(
