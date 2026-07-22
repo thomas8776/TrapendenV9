@@ -4,6 +4,7 @@ import 'bug_page.dart';
 import 'info_page.dart';
 import 'manage_server_page.dart';
 import 'osint_page.dart';
+import 'network_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -205,6 +206,16 @@ class ToolsPage extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (_) => const OsintPage(),
+      ),
+    );
+    return;
+  }
+
+  if (item["title"] == "Network") {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const NetworkPage(),
       ),
     );
     return;
