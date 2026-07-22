@@ -3,6 +3,7 @@ import 'package:video_player/video_player.dart';
 import 'bug_page.dart';
 import 'info_page.dart';
 import 'tools_page.dart';
+import 'create_account_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -835,9 +836,22 @@ Widget build(BuildContext context) {
           ),
 
           ListTile(
-            leading: Icon(Icons.person_add, color: Colors.white),
-            title: Text("Create Account", style: TextStyle(color: Colors.white)),
-          ),
+  leading: const Icon(Icons.person_add, color: Colors.white),
+  title: const Text(
+    "Create Account",
+    style: TextStyle(color: Colors.white),
+  ),
+  onTap: () {
+    Navigator.pop(context);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const CreateAccountPage(),
+      ),
+    );
+  },
+),
 
           Divider(color: Colors.white24),
 
