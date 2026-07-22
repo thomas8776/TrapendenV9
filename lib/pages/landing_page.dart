@@ -30,7 +30,7 @@ class _LandingPageState extends State<LandingPage> {
       ..initialize().then((_) {
         _videoController
           ..setLooping(true)
-          ..setVolume(0)
+          ..setVolume(1.0)
           ..play();
 
         if (mounted) setState(() {});
