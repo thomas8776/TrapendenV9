@@ -432,15 +432,34 @@ const SizedBox(height: 20),
     ],
   ),
   child: ElevatedButton.icon(
-    onPressed: () {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "🚀 ${bugs[selectedBug]["name"]} berhasil dipilih",
-          ),
+    onPressed: () async {
+  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (_) => const Center(
+      child: CircularProgressIndicator(
+        color: Colors.cyanAccent,
+      ),
+    ),
+  );
+
+  await Future.delayed(const Duration(seconds: 2));
+
+  if (context.mounted) {
+    Navigator.pop(context);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(
+          "✅ SEND SUCCESS - ${bugs[selectedBug]["name"]}",
         ),
-      );
-    },
+      ),
+    );
+  }
+},
     icon: const Icon(Icons.send_rounded),
     label: const Text(
       "SEND BUG",
