@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/account_service.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -12,14 +13,28 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final password = TextEditingController();
   final confirm = TextEditingController();
 
+  String currentRole = "Developer";
   String selectedRole = "Member";
 
-  final List<String> roles = [
-    "Member",
-    "VIP",
-    "Reseller",
-    "Developer",
-  ];
+  List<String> get roles {
+  if (currentRole == "Developer") {
+    return [
+      "Member",
+      "VIP",
+      "Reseller",
+      "Developer",
+    ];
+  }
+
+  if (currentRole == "Reseller") {
+    return [
+      "Member",
+      "VIP",
+    ];
+  }
+
+  return [];
+}
 
   @override
   Widget build(BuildContext context) {
@@ -213,6 +228,18 @@ SizedBox(
   height: 58,
   child: ElevatedButton.icon(
     onPressed: () async {
+
+    if (currentRole == "Member" || currentRole == "VIP") {
+  ScaffoldMessenger.of(context).showSnackBar(
+    const SnackBar(
+      content: Text(
+        "Anda tidak memiliki akses untuk membuat akun.",
+      ),
+    ),
+  );
+  return;
+}
+
       if (username.text.trim().isEmpty ||
           password.text.trim().isEmpty ||
           confirm.text.trim().isEmpty) {
@@ -232,6 +259,16 @@ SizedBox(
         );
         return;
       }
+
+AccountService.accounts.add(
+  Account(
+    username: username.text.trim(),
+    password: password.text.trim(),
+    role: selectedRole,
+  ),
+);
+
+await AccountService.saveAccounts();
 
       showDialog(
         context: context,

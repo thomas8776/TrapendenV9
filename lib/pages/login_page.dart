@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import '../services/account_service.dart';
 import 'intro_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +138,8 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(height: 25),
 
                           TextField(
-                            style: const TextStyle(color: Colors.white),
+  controller: usernameController,
+  style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               prefixIcon: const Icon(
                                 Icons.person_outline,
@@ -205,13 +215,43 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const IntroPage(),
-                                    ),
-                                  );
-                                },
+  if (usernameController.text.trim().isEmpty ||
+      passwordController.text.trim().isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Masukkan username dan password"),
+      ),
+    );
+    return;
+  }
+
+  final account = AccountService.accounts.firstWhere(
+    (e) =>
+        e.username == usernameController.text.trim() &&
+        e.password == passwordController.text.trim(),
+    orElse: () => Account(
+      username: "",
+      password: "",
+      role: "",
+    ),
+  );
+
+  if (account.username.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Username atau Password salah"),
+      ),
+    );
+    return;
+  }
+
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const IntroPage(),
+    ),
+  );
+},
                               ),
                             ),
                           ),

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'services/account_service.dart';
 import 'pages/home_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await AccountService.loadAccounts();
+
   runApp(const TrapendenV9());
 }
 
@@ -12,8 +17,14 @@ class TrapendenV9 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'TrapendenV9',
-      theme: ThemeData.dark(),
+      title: 'TrapendenV10',
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xff090d18),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.cyanAccent,
+          brightness: Brightness.dark,
+        ),
+      ),
       home: const HomePage(),
     );
   }
