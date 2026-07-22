@@ -4,6 +4,7 @@ import 'bug_page.dart';
 import 'info_page.dart';
 import 'tools_page.dart';
 import 'create_account_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -841,16 +842,30 @@ Widget build(BuildContext context) {
     "Create Account",
     style: TextStyle(color: Colors.white),
   ),
-  onTap: () {
-    Navigator.pop(context);
+  onTap: () async {
+  final prefs = await SharedPreferences.getInstance();
+  final role = prefs.getString("role") ?? "";
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => const CreateAccountPage(),
+  Navigator.pop(context);
+
+  if (role != "Developer" && role != "Reseller") {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          "Hanya Developer dan Reseller yang dapat membuat akun",
+        ),
       ),
     );
-  },
+    return;
+  }
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const CreateAccountPage(),
+    ),
+  );
+},
 ),
 
           Divider(color: Colors.white24),

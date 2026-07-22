@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/account_service.dart';
 import 'intro_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -215,7 +216,7 @@ TextField(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
   if (usernameController.text.trim().isEmpty ||
       passwordController.text.trim().isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -246,12 +247,15 @@ TextField(
     return;
   }
 
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (_) => const IntroPage(),
-    ),
-  );
+  final prefs = await SharedPreferences.getInstance();
+await prefs.setString("role", account.role);
+
+Navigator.pushReplacement(
+  context,
+  MaterialPageRoute(
+    builder: (_) => const IntroPage(),
+  ),
+);
 },
                               ),
                             ),
