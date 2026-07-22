@@ -25,7 +25,7 @@ class _LandingPageState extends State<LandingPage> {
     _bannerController = PageController();
 
     _videoController = VideoPlayerController.asset(
-      "assets/videos/login.mp4",
+      "assets/videos/landing.mp4",
     )
       ..initialize().then((_) {
         _videoController

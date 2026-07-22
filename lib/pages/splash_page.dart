@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     _controller = VideoPlayerController.asset(
-      'assets/videos/splash.mp4',
+      'assets/videos/login.mp4',
     )
       ..initialize().then((_) {
         setState(() {});

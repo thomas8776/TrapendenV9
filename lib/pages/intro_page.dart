@@ -18,7 +18,7 @@ class _IntroPageState extends State<IntroPage> {
     super.initState();
 
     _controller = VideoPlayerController.asset(
-      'assets/videos/splash.mp4',
+      'assets/videos/login.mp4',
     )..initialize().then((_) {
         setState(() {});
         _controller.play();
