@@ -14,7 +14,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
   String selectedRole = "Member";
 
-  final roles = [
+  final List<String> roles = [
     "Member",
     "VIP",
     "Reseller",
@@ -25,60 +25,190 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff090d18),
-      appBar: AppBar(
-        title: const Text("Create Account"),
-        backgroundColor: Colors.black,
+      
+            appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "CREATE ACCOUNT",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          TextField(
-            controller: username,
-            decoration: const InputDecoration(
-              labelText: "Username",
+
+          Center(
+            child: ClipOval(
+              child: Image.asset(
+                "assets/images/logo.png",
+                width: 90,
+                height: 90,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 20),
 
-          TextField(
-            controller: password,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Password",
+          const Text(
+            "CREATE ACCOUNT",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.2,
             ),
-          ),
-
-          const SizedBox(height: 15),
-
-          TextField(
-            controller: confirm,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Confirm Password",
-            ),
-          ),
-
-          const SizedBox(height: 15),
-
-          DropdownButtonFormField<String>(
-            value: selectedRole,
-            items: roles.map((e) {
-              return DropdownMenuItem(
-                value: e,
-                child: Text(e),
-              );
-            }).toList(),
-            onChanged: (v) {
-              setState(() {
-                selectedRole = v!;
-              });
-            },
           ),
 
           const SizedBox(height: 30),
 
-          SizedBox(
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(.08),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: Colors.cyanAccent.withOpacity(.35),
+              ),
+            ),
+            child: Column(
+              children: [
+
+                TextField(
+                  controller: username,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: "Username",
+                    labelStyle:
+                        const TextStyle(color: Colors.white70),
+                    prefixIcon: const Icon(
+                      Icons.person,
+                      color: Colors.cyanAccent,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        color: Colors.cyanAccent,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius:
+                          BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        color: Colors.cyanAccent,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 18),
+
+                TextField(
+  controller: password,
+  obscureText: true,
+  style: const TextStyle(color: Colors.white),
+  decoration: InputDecoration(
+    labelText: "Password",
+    labelStyle: const TextStyle(color: Colors.white70),
+    prefixIcon: const Icon(
+      Icons.lock,
+      color: Colors.cyanAccent,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+        width: 2,
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 18),
+
+TextField(
+  controller: confirm,
+  obscureText: true,
+  style: const TextStyle(color: Colors.white),
+  decoration: InputDecoration(
+    labelText: "Confirm Password",
+    labelStyle: const TextStyle(color: Colors.white70),
+    prefixIcon: const Icon(
+      Icons.lock_outline,
+      color: Colors.cyanAccent,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+        width: 2,
+      ),
+    ),
+  ),
+),
+
+const SizedBox(height: 18),
+
+DropdownButtonFormField<String>(
+  value: selectedRole,
+  dropdownColor: const Color(0xff111111),
+  decoration: InputDecoration(
+    labelText: "Role",
+    labelStyle: const TextStyle(color: Colors.white70),
+    prefixIcon: const Icon(
+      Icons.admin_panel_settings,
+      color: Colors.cyanAccent,
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: const BorderSide(
+        color: Colors.cyanAccent,
+        width: 2,
+      ),
+    ),
+  ),
+  items: roles.map((role) {
+    return DropdownMenuItem(
+      value: role,
+      child: Text(role),
+    );
+  }).toList(),
+  onChanged: (value) {
+    setState(() {
+      selectedRole = value!;
+    });
+  },
+),
+
+const SizedBox(height: 30),
+
+SizedBox(
   width: double.infinity,
   height: 58,
   child: ElevatedButton.icon(
@@ -115,18 +245,26 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
       await Future.delayed(const Duration(seconds: 2));
 
-      if (context.mounted) {
-        Navigator.pop(context);
+      if (!context.mounted) return;
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.green,
-            content: Text(
-              "✅ Account ${username.text} berhasil dibuat ($selectedRole)",
-            ),
+      Navigator.pop(context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(
+            "✅ Account ${username.text} berhasil dibuat ($selectedRole)",
           ),
-        );
-      }
+        ),
+      );
+
+      username.clear();
+      password.clear();
+      confirm.clear();
+
+      setState(() {
+        selectedRole = "Member";
+      });
     },
     icon: const Icon(Icons.person_add),
     label: const Text(
@@ -144,9 +282,4 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       ),
     ),
   ),
-),
-        ],
-      ),
-    );
-  }
-}
+), 
