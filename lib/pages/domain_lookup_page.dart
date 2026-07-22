@@ -30,9 +30,7 @@ class _DomainLookupPageState extends State<DomainLookupPage> {
                 hintText: "example.com",
               ),
             ),
-
             const SizedBox(height: 20),
-
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -50,4 +48,7 @@ class _DomainLookupPageState extends State<DomainLookupPage> {
             ),
           ],
         ),
-     
+      ),
+    );
+  }
+}
