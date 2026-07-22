@@ -5,6 +5,7 @@ import 'info_page.dart';
 import 'tools_page.dart';
 import 'create_account_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'login_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -20,9 +21,21 @@ class _LandingPageState extends State<LandingPage> {
   int _bannerIndex = 0;
   int _currentNav = 0;
 
+  String userRole = "";
+
+  Future<void> loadRole() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  setState(() {
+    userRole = prefs.getString("role") ?? "";
+  });
+}
+
   @override
   void initState() {
     super.initState();
+
+    loadRole();
 
     _bannerController = PageController();
 
@@ -313,14 +326,14 @@ class _LandingPageState extends State<LandingPage> {
 
         const SizedBox(height: 10),
 
-        const Text(
-          "Trapenden Developer",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        Text(
+  "Trapenden $userRole",
+  style: const TextStyle(
+    color: Colors.white,
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
+  ),
+),
 
         const SizedBox(height: 20),
 
@@ -871,9 +884,25 @@ Widget build(BuildContext context) {
           Divider(color: Colors.white24),
 
           ListTile(
-            leading: Icon(Icons.logout, color: Colors.red),
-            title: Text("Logout", style: TextStyle(color: Colors.red)),
-          ),
+  leading: const Icon(Icons.logout, color: Colors.red),
+  title: const Text(
+    "Logout",
+    style: TextStyle(color: Colors.red),
+  ),
+  onTap: () async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.remove("role");
+
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const LoginPage(),
+      ),
+      (route) => false,
+    );
+  },
+),
         ],
       ),
     ),
