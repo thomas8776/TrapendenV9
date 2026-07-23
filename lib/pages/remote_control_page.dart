@@ -73,7 +73,7 @@ class RemoteControlPage extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
               child: GridView.builder(
-                itemCount: menus.length,
+                itemCount: items.length,
                 gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -81,7 +81,7 @@ class RemoteControlPage extends StatelessWidget {
                   mainAxisSpacing: 15,
                 ),
                 itemBuilder: (_, i) {
-                  final item = menus[i];
+                  final item = items[i];
 
                   return InkWell(
                     borderRadius: BorderRadius.circular(20),
