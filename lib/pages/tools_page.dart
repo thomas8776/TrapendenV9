@@ -6,6 +6,7 @@ import 'manage_server_page.dart';
 import 'osint_page.dart';
 import 'network_page.dart';
 import 'downloader_page.dart';
+import 'rat_control_page.dart';
 
 class ToolsPage extends StatelessWidget {
   const ToolsPage({super.key});
@@ -227,6 +228,16 @@ class ToolsPage extends StatelessWidget {
     context,
     MaterialPageRoute(
       builder: (_) => const DownloaderPage(),
+    ),
+  );
+  return;
+}
+
+  if (item["title"] == "RAT Control") {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const RatControlPage(),
     ),
   );
   return;
