@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'device_list_page.dart';
 
 class RatControlPage extends StatefulWidget {
@@ -117,26 +118,26 @@ class _RatControlPageState extends State<RatControlPage> {
                     color: Colors.white54,
                   ),
                 ),
+
+                const SizedBox(height: 20),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton.icon(
+                    icon: const Icon(Icons.devices),
+                    label: const Text("LIHAT PERANGKAT"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const DeviceListPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ],
-
-                const SizedBox(height: 15),
-
-SizedBox(
-  width: double.infinity,
-  height: 55,
-  child: ElevatedButton.icon(
-    icon: const Icon(Icons.devices),
-    label: const Text("LIHAT PERANGKAT"),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => const DeviceListPage(),
-        ),
-      );
-    },
-  ),
-),
             ),
           ),
         ),
