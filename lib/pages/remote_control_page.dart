@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lock_device_page.dart';
 import 'live_location_page.dart';
+import 'lost_mode_page.dart';
 
 class RemoteControlPage extends StatelessWidget {
   final String deviceName;
@@ -106,6 +107,8 @@ class RemoteControlPage extends StatelessWidget {
   );
   return;
 }
+
+  
 
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
