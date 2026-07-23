@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lock_device_page.dart';
+import 'live_location_page.dart';
 
 class RemoteControlPage extends StatelessWidget {
   final String deviceName;
@@ -12,21 +13,14 @@ class RemoteControlPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menus = [
-      {"icon": Icons.sms, "title": "SMS"},
-      {"icon": Icons.contacts, "title": "Contacts"},
-      {"icon": Icons.photo, "title": "Gallery"},
-      {"icon": Icons.folder, "title": "Files"},
-      {"icon": Icons.location_on, "title": "Location"},
-      {"icon": Icons.camera_alt, "title": "Camera"},
-      {"icon": Icons.mic, "title": "Microphone"},
-      {"icon": Icons.notifications, "title": "Notifications"},
-      {"icon": Icons.call, "title": "Call Logs"},
-      {"icon": Icons.apps, "title": "Installed Apps"},
-      {"icon": Icons.storage, "title": "Storage"},
-      {"icon": Icons.settings_remote, "title": "Remote Shell"},
-      {"icon": Icons.lock, "title": "Lock Device"},   
-    ];
-
+    final items = [
+  {"icon": Icons.location_on, "title": "Live Location"},
+  {"icon": Icons.alarm, "title": "Alarm"},
+  {"icon": Icons.camera_alt, "title": "Camera"},
+  {"icon": Icons.photo, "title": "Gallery"},
+  {"icon": Icons.contacts, "title": "Contacts"},
+  {"icon": Icons.lock, "title": "Lock Device"},
+];
     return Scaffold(
       backgroundColor: const Color(0xff090d18),
       appBar: AppBar(
@@ -103,6 +97,16 @@ class RemoteControlPage extends StatelessWidget {
     );
     return;
   }
+  
+  if (item["title"] == "Live Location") {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => const LiveLocationPage(),
+    ),
+  );
+  return;
+}
 
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
