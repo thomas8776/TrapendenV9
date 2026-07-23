@@ -12,7 +12,6 @@ class RemoteControlPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final menus = [
     final items = [
   {"icon": Icons.location_on, "title": "Live Location"},
   {"icon": Icons.alarm, "title": "Alarm"},
